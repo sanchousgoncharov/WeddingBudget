@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="title">Новый расчет бюджета</h2>
+
+  <% if @calculation.errors.any? %>
+    <div class="mt">
+      <% @calculation.errors.full_messages.each do |message| %>
+        <p class="mb-sm text-red"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mt">
+    <%= form_with model: @calculation, data: {turbo: false} do |form|%>
+      <p><%= form.label :title, 'Описание расчета'%></p>
+      <p><%= form.text_field :title, class: 'form-text-field'%></p>
+
+      <p class="mt-lg"><%= form.submit 'Создать!', class: 'button-button-main'%> 
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,7 @@ class Guest < ApplicationRecord
 
   # Валидации
   validates :name, presence: true
-  validates :phone, allow_nil: true
+  validates :phone, allow_nil: true, presence: true
   validates :invited, inclusion: { in: [ true, false ] }
   validates :arrive, inclusion: { in: [ true, false ] }
   validates :zags, inclusion: { in: [ true, false ] }

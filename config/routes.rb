@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create]
   resource :session, only: %i[new create destroy]
-  resources :calculations, only: %i[new create update destroy index show]
+  resources :calculations, only: %i[new create edit update show destroy index]
 end

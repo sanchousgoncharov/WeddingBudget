@@ -1,2 +1,10 @@
-<h1>Calculations#show</h1>
-<p>Find me in app/views/calculations/show.html.erb</p>
+<div class="container">
+    <h2 class="title">Страница бюджета свадьбы</h2>
+    <h3><%= @calculation.title %></h3>
+    <p>Дата создания: <%= @calculation.created_at.strftime("%d.%m.%Y") %></p>
+    <p>Дата последнего изменения: <%= @calculation.updated_at.in_time_zone('Moscow').strftime("%d.%m.%Y %H:%M") %></p>
+    <p><%= link_to "Все расчеты", calculations_path %></p>
+    <p><%= link_to "Редактировать", edit_calculation_path(@calculation) %></p>
+    <p><%= link_to "Удалить", calculation_path(@calculation), data: {turbo_method: :delete, confirm: 'Вы уверены, что хотите удалить этот расчет?' } %></p>
+
+</div>

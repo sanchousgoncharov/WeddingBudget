@@ -1,6 +1,7 @@
 class CalculationsController < ApplicationController
   def new
     @calculation = Calculation.new
+    @calculation.budgets.build
   end
 
   def create
@@ -48,7 +49,7 @@ class CalculationsController < ApplicationController
 
 private
   def calculation_params
-    params.require(:calculation).permit(:title)
+    params.require(:calculation).permit(:title, budgets_attributes: [ :title, :planned_sum, :actual_sum, :prepay_sum, :remain_sum, :_destroy ])
   end
 
   def check_user_access

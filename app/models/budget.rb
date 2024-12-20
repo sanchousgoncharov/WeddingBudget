@@ -1,5 +1,5 @@
 class Budget < ApplicationRecord
-  belongs_to :calculation, foreign_key: "calc_id"
+  belongs_to :calculation, foreign_key: "calc_id", optional: true
 
   # Валидации
   validates :title, presence: true

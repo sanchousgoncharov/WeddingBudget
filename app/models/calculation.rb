@@ -10,4 +10,6 @@ class Calculation < ApplicationRecord
 
   # Валидации
   validates :title, presence: true
+
+  accepts_nested_attributes_for :budgets, allow_destroy: true
 end

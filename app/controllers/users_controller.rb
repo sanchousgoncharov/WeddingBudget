@@ -11,6 +11,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      # cur_user = User.find_by(user_email: user_params[:user_email])&.authenticate(user_params[:password])
+      session[:user_id] = @user.id
+
       redirect_to root_path, notice: "Вы успешно зарегистрировались!"
     else
       flash.now[:alert] = "Вы неправильно заполнили поля регистрации!"

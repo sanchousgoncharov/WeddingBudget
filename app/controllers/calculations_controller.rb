@@ -1,7 +1,12 @@
 class CalculationsController < ApplicationController
   def new
-    @calculation = Calculation.new
-    @calculation.budgets.build
+    if current_user.nil?
+      render plain: "401 Unauthorized: Not authorize", status: :unauthorized
+      # redirect_to new_session_path
+    else
+      @calculation = Calculation.new
+      @calculation.budgets.build
+    end
   end
 
   def create
@@ -36,10 +41,14 @@ class CalculationsController < ApplicationController
   end
 
   def index
-    @calculations = current_user.calculations
+    if current_user.nil?
+      render plain: "401 Unauthorized: Not authorize", status: :unauthorized
+    else
+      @calculations = current_user.calculations
 
-    if !(@calculations.present?)
-      flash.now[:notice] = "У вас ещё нет расчитанных бюджетов для свадьбы! Давайте создадим?)"
+      if !(@calculations.present?)
+        flash.now[:notice] = "У вас ещё нет расчитанных бюджетов для свадьбы! Давайте создадим?)"
+      end
     end
   end
 
@@ -55,7 +64,9 @@ private
   def check_user_access
     @calculation = Calculation.find(params[:id])
 
-    if @calculation.nil? || @calculation.user_id != current_user.id
+    if current_user.nil?
+      render plain: "401 Unauthorized: Not authorize", status: :unauthorized
+    elsif @calculation.nil? || @calculation.user_id != current_user.id
       @calculation = nil
       render plain: "403 Forbidden: You do not have access to this resource", status: :forbidden
     else

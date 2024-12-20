@@ -20,10 +20,14 @@
       <p class="mt"><%= form.label :password, 'Пароль'%></p>
       <p><%= form.password_field :password, class: 'form-text-field'%></p>
 
-      <p class="mt"><%= form.label :password_confirmation, 'Пароль'%></p>
+      <p class="mt"><%= form.label :password_confirmation, 'Подтвердение пароль'%></p>
       <p><%= form.password_field :password_confirmation, class: 'form-text-field'%></p>
 
-      <p class="mt-lg"><%= form.submit 'Зарегистрироваться', class: 'button-button-main'%> 
+      <p class="mt-lg">
+        <%= form.submit 'Зарегистрироваться', class: 'button-button-main'%> 
+        <%= link_to "Войти", new_session_path %>
+      </p>
+      
     <% end %>
   </div>
 </div>

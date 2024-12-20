@@ -5,9 +5,14 @@
 </head>
 <body>
   <h1>Добро пожаловать на сервис расчета бюджета!</h1>
-  <p>Этот сервис поможет вам рассчитать бюджет для различных нужд. Просто нажмите кнопку ниже, чтобы начать расчет.</p>
+  <p>Этот сервис поможет вам спланировать свадьбу. Просто нажмите кнопку ниже, чтобы начать расчет.</p>
   
-  
+  <% if current_user.nil? %>
+    <%= button_to 'Начать!', new_session_path, method: :get, class: 'btn btn-primary' %>
+  <% else %>
+    <%= button_to 'Начать!', calculations_path, method: :get, class: 'btn btn-primary' %>
+  <% end %>
+
 </body>
 </html>
 

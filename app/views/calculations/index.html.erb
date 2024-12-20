@@ -1,8 +1,11 @@
 <div class="container">
     <h1 class="title">Все расчеты</h1>
 
+    <p><%= button_to 'Создать!', new_calculation_path, method: :get, class: 'btn btn-primary' %>
+    
     <% @calculations.each do |calculation|%>
-        <p><%= link_to "План \"#{calculation.title}\". Создано #{calculation.created_at.strftime("%d.%m.%Y")}", calculation_path(id: calculation.id) %></p>
+        <p><%= link_to "План \"#{calculation.title}\". Создано #{calculation.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y")}", calculation_path(id: calculation.id) %></p>
     <% end %>
+    
 </div>
 

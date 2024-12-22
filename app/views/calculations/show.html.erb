@@ -32,6 +32,37 @@
     <p>Бюджет отсутствует.</p>
     <% end %>
 
+    <h2>Контроль подрядчиков:</h2>
+    <% if @controls.any? %>
+    <table>
+        <thead>
+        <tr>
+            <th>Вид работы</th>
+            <th>Стоимость работы</th>
+            <th>Предоплата</th>
+            <th>Остаток</th>
+            <th>Дата выполнения</th>
+            <th>Место</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @controls.each do |control| %>
+            <tr>
+            <td><%= control.title %></td>
+            <td><%= control.actual_sum %></td>
+            <td><%= control.prepay_sum %></td>
+            <td><%= control.remain_sum %></td>
+            <td><%= control.date %></td>
+            <td><%= control.place %></td>
+            
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <% else %>
+    <p>Контроль подрядчиков отсутствует.</p>
+    <% end %>
+
     <p><%= link_to "Все расчеты", calculations_path %></p>
     <p><%= link_to "Редактировать", edit_calculation_path(@calculation), data: {turbo: false} %></p>
     <p><%= link_to "Удалить", calculation_path(@calculation), data: {turbo_method: :delete, confirm: 'Вы уверены, что хотите удалить этот расчет?' } %></p>

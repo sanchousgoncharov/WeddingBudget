@@ -12,4 +12,5 @@ class Calculation < ApplicationRecord
   validates :title, presence: true
 
   accepts_nested_attributes_for :budgets, allow_destroy: true
+  accepts_nested_attributes_for :controls, allow_destroy: true
 end

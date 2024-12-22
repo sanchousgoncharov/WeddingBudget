@@ -46,6 +46,40 @@
 
       <%= link_to "Добавить строку", "#", id: "add_budget_row" %><br><br>
 
+      <h2>Контроль подрядчиков:</h2>
+      <table id="controls_table">
+        <thead>
+          <tr>
+            <th>Вид работы</th>
+            <th>Стоимость работы</th>
+            <th>Предоплата</th>
+            <th>Остаток</th>
+            <th>Дата выполнения</th>
+            <th>Место</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= form.fields_for :controls do |control_form| %>
+            <tr class="control_fields">
+              <td><%= control_form.text_field :title %></td>
+              <td><%= control_form.number_field :actual_sum %></td>
+              <td><%= control_form.number_field :prepay_sum %></td>
+              <td><%= control_form.number_field :remain_sum %></td>
+              <td><%= control_form.text_field  :date %></td>
+              <td><%= control_form.text_field  :place %></td>
+              <td>
+                <%= link_to "Удалить", "#", class: "remove_control_row", data: { id: control_form.object.id } %>
+                <%= control_form.hidden_field :id %> <!-- Скрытое поле для передачи id -->
+                <%= control_form.hidden_field :_destroy, value: "false" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Добавить строку", "#", id: "add_control_row" %><br><br>
+
       <p class="mt-lg"><%= form.submit 'Редактировать!', class: 'button-button-main'%> 
     <% end %>
   </div>

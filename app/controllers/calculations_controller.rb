@@ -56,11 +56,14 @@ class CalculationsController < ApplicationController
   def show
     @calculation = check_user_access
     @budgets = @calculation.budgets.order(:id)
+    @controls = @calculation.controls.order(:id)
   end
 
 private
   def calculation_params
-    params.require(:calculation).permit(:title, budgets_attributes: [ :id, :title, :planned_sum, :actual_sum, :prepay_sum, :remain_sum, :order, :_destroy ])
+    params.require(:calculation).permit(:title,
+    budgets_attributes: [ :id, :title, :planned_sum, :actual_sum, :prepay_sum, :remain_sum, :order, :_destroy ],
+    controls_attributes: [ :id, :title, :actual_sum, :prepay_sum, :remain_sum, :date, :place, :order, :_destroy ])
   end
 
   def check_user_access

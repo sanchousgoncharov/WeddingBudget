@@ -2,4 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "budget_table";
+import "control_table";
 

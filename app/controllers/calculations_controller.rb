@@ -28,9 +28,10 @@ class CalculationsController < ApplicationController
   def update
     @calculation = check_user_access
     if @calculation.update(calculation_params)
+      @calculation.touch
       redirect_to calculation_path, notice: "Изменения сохранены!"
     else
-      render :show, alert: "Ошибка!"
+      render :edit, alert: "Ошибка обновления расчета."
     end
   end
 
@@ -54,12 +55,12 @@ class CalculationsController < ApplicationController
 
   def show
     @calculation = check_user_access
-    @budgets = @calculation.budgets.order(:order)
+    @budgets = @calculation.budgets.order(:id)
   end
 
 private
   def calculation_params
-    params.require(:calculation).permit(:title, budgets_attributes: [ :title, :planned_sum, :actual_sum, :prepay_sum, :remain_sum, :order, :_destroy ])
+    params.require(:calculation).permit(:title, budgets_attributes: [ :id, :title, :planned_sum, :actual_sum, :prepay_sum, :remain_sum, :order, :_destroy ])
   end
 
   def check_user_access

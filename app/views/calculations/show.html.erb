@@ -33,7 +33,7 @@
     <% end %>
 
     <p><%= link_to "Все расчеты", calculations_path %></p>
-    <p><%= link_to "Редактировать", edit_calculation_path(@calculation) %></p>
+    <p><%= link_to "Редактировать", edit_calculation_path(@calculation), data: {turbo: false} %></p>
     <p><%= link_to "Удалить", calculation_path(@calculation), data: {turbo_method: :delete, confirm: 'Вы уверены, что хотите удалить этот расчет?' } %></p>
 
 </div>

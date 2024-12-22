@@ -5,7 +5,7 @@ class CalculationsController < ApplicationController
       # redirect_to new_session_path
     else
       @calculation = Calculation.new
-      @calculation.budgets.build
+      # @calculation.budgets.build
     end
   end
 
@@ -54,11 +54,12 @@ class CalculationsController < ApplicationController
 
   def show
     @calculation = check_user_access
+    @budgets = @calculation.budgets.order(:order)
   end
 
 private
   def calculation_params
-    params.require(:calculation).permit(:title, budgets_attributes: [ :title, :planned_sum, :actual_sum, :prepay_sum, :remain_sum, :_destroy ])
+    params.require(:calculation).permit(:title, budgets_attributes: [ :title, :planned_sum, :actual_sum, :prepay_sum, :remain_sum, :order, :_destroy ])
   end
 
   def check_user_access

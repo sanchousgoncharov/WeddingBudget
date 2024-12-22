@@ -3,6 +3,35 @@
     <h3><%= @calculation.title %></h3>
     <p>Дата создания: <%= @calculation.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y") %></p>
     <p>Дата последнего изменения: <%= @calculation.updated_at.in_time_zone('Moscow').strftime("%d.%m.%Y %H:%M") %></p>
+
+    <h2>Бюджет:</h2>
+    <% if @budgets.any? %>
+    <table>
+        <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>Планируемая сумма</th>
+            <th>Фактическая сумма</th>
+            <th>Предоплата</th>
+            <th>Остаток</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @budgets.each do |budget| %>
+            <tr>
+            <td><%= budget.title %></td>
+            <td><%= budget.planned_sum %></td>
+            <td><%= budget.actual_sum %></td>
+            <td><%= budget.prepay_sum %></td>
+            <td><%= budget.remain_sum %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <% else %>
+    <p>Бюджет отсутствует.</p>
+    <% end %>
+
     <p><%= link_to "Все расчеты", calculations_path %></p>
     <p><%= link_to "Редактировать", edit_calculation_path(@calculation) %></p>
     <p><%= link_to "Удалить", calculation_path(@calculation), data: {turbo_method: :delete, confirm: 'Вы уверены, что хотите удалить этот расчет?' } %></p>

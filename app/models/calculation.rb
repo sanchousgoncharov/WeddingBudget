@@ -13,4 +13,7 @@ class Calculation < ApplicationRecord
 
   accepts_nested_attributes_for :budgets, allow_destroy: true
   accepts_nested_attributes_for :controls, allow_destroy: true
+  accepts_nested_attributes_for :contractors, allow_destroy: true
+  accepts_nested_attributes_for :alcos, allow_destroy: true
+  accepts_nested_attributes_for :guests, allow_destroy: true
 end

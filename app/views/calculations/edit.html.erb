@@ -80,6 +80,101 @@
 
       <%= link_to "Добавить строку", "#", id: "add_control_row" %><br><br>
 
+      <h2>Обязательства и договоренности:</h2>
+      <table id="contractors_table">
+        <thead>
+          <tr>
+            <th>Категория</th>
+            <th>Ответственный</th>
+            <th>Описание</th>
+            <th>Статус выполнения</th>
+            <th>Имя и Фамилия</th>
+            <th>Телефон</th>
+            <th>Эл.почта</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= form.fields_for :contractors do |contractor_form| %>
+            <tr class="contractor_fields">
+              <td><%= contractor_form.text_field :category %></td>
+              <td><%= contractor_form.text_field :responsible %></td>
+              <td><%= contractor_form.text_field :description %></td>
+              <td><%= contractor_form.check_box :status %></td>
+              <td><%= contractor_form.text_field  :name %></td>
+              <td><%= contractor_form.text_field  :phone %></td>
+              <td><%= contractor_form.text_field  :email %></td>
+              <td>
+                <%= link_to "Удалить", "#", class: "remove_contractor_row", data: { id: contractor_form.object.id } %>
+                <%= contractor_form.hidden_field :id %> <!-- Скрытое поле для передачи id -->
+                <%= contractor_form.hidden_field :_destroy, value: "false" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Добавить строку", "#", id: "add_contractor_row" %><br><br>
+
+      <h2>Учет гостей:</h2>
+      <table id="guests_table">
+        <thead>
+          <tr>
+            <th>Имя гостя</th>
+            <th>Телефон</th>
+            <th>Отправлено приглашение?</th>
+            <th>Придет?</th>
+            <th>ЗАГС</th>
+            <th>Мальчишник/девичник</th>
+            <th>Чей гость?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= form.fields_for :guests do |guest_form| %>
+            <tr class="guest_fields">
+              <td><%= guest_form.text_field :name %></td>
+              <td><%= guest_form.text_field :phone %></td>
+              <td><%= guest_form.check_box :invited , {}, true, false %></td>
+              <td><%= guest_form.check_box :arrive , {}, true, false  %></td>
+              <td><%= guest_form.check_box  :zags , {}, true, false  %></td>
+              <td><%= guest_form.check_box  :party , {}, true, false  %></td>
+              <td><%= guest_form.text_field  :guest %></td>
+              <td>
+                <%= link_to "Удалить", "#", class: "remove_guest_row", data: { id: guest_form.object.id } %>
+                <%= guest_form.hidden_field :id %> <!-- Скрытое поле для передачи id -->
+                <%= guest_form.hidden_field :_destroy, value: "false" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Добавить строку", "#", id: "add_guest_row" %><br><br>
+
+      <h2>Расчет алкоголя:</h2>
+      <table id="alcos_table">
+        <thead>
+          <tr>
+            <th>Напиток</th>
+            <th>Литров на чел.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= form.fields_for :alcos do |alco_form| %>
+            <tr class="alco_fields">
+              <td><%= alco_form.text_field :title %></td>
+              <td><%= alco_form.number_field :litres_for_one %></td>
+              <td>
+                <%= link_to "Удалить", "#", class: "remove_alco_row", data: { id: alco_form.object.id } %>
+                <%= alco_form.hidden_field :id %> <!-- Скрытое поле для передачи id -->
+                <%= alco_form.hidden_field :_destroy, value: "false" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to "Добавить строку", "#", id: "add_alco_row" %><br><br>
+
       <p class="mt-lg"><%= form.submit 'Редактировать!', class: 'button-button-main'%> 
     <% end %>
   </div>

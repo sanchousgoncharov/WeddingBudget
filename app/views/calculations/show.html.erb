@@ -63,6 +63,94 @@
     <p>Контроль подрядчиков отсутствует.</p>
     <% end %>
 
+    <h2>Обязательства и договоренности:</h2>
+    <% if @contractors.any? %>
+    <table>
+        <thead>
+        <tr>
+            <th>Категория</th>
+            <th>Ответственный</th>
+            <th>Описание</th>
+            <th>Статус выполнения</th>
+            <th>Имя и Фамилия</th>
+            <th>Телефон</th>
+            <th>Эл.почта</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @contractors.each do |contractor_form| %>
+            <tr>
+            <td><%= contractor_form.category %></td>
+              <td><%= contractor_form.responsible %></td>
+              <td><%= contractor_form.description %></td>
+              <td><%= contractor_form.status %></td>
+              <td><%= contractor_form.name %></td>
+              <td><%= contractor_form.phone %></td>
+              <td><%= contractor_form.email %></td>
+            
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <% else %>
+    <p>Контроль обязательств и договоренностей отсутствует.</p>
+    <% end %>
+
+    <h2>Учет гостей:</h2>
+    <% if @guests.any? %>
+    <table>
+        <thead>
+        <tr>
+            <th>Имя гостя</th>
+            <th>Телефон</th>
+            <th>Отправлено приглашение?</th>
+            <th>Придет?</th>
+            <th>ЗАГС</th>
+            <th>Мальчишник/девичник</th>
+            <th>Чей гость?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @guests.each do |guest_form| %>
+            <tr>
+            <td><%= guest_form.name %></td>
+              <td><%= guest_form.phone %></td>
+              <td><%= guest_form.invited %></td>
+              <td><%= guest_form.arrive %></td>
+              <td><%= guest_form.zags %></td>
+              <td><%= guest_form.party %></td>
+              <td><%= guest_form.guest %></td>
+            
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <% else %>
+    <p>Учет гостей отсутствует.</p>
+    <% end %>
+
+    <h2>Расчет алкоголя:</h2>
+    <% if @alcos.any? %>
+    <table>
+        <thead>
+        <tr>
+            <th>Напиток</th>
+            <th>Литров на чел.</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @alcos.each do |alco_form| %>
+            <tr>
+                <td><%= alco_form.title %></td>
+                <td><%= alco_form.litres_for_one %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <% else %>
+    <p>Расчет алкоголя отсутствует.</p>
+    <% end %>
+
     <p><%= link_to "Все расчеты", calculations_path %></p>
     <p><%= link_to "Редактировать", edit_calculation_path(@calculation), data: {turbo: false} %></p>
     <p><%= link_to "Удалить", calculation_path(@calculation), data: {turbo_method: :delete, confirm: 'Вы уверены, что хотите удалить этот расчет?' } %></p>

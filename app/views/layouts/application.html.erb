@@ -18,33 +18,39 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <link rel="stylesheet" href="styles.css">
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+<body>
     <div class="wrapper">
 
-      <div class="navbar">
-        <p class="title-sm text-bold"><%= link_to 'Wedding Budget', root_path %></p>
-        <div>
-          <% if current_user.present? %>
-            <%= content_tag 'span', "#{current_user.name}", class: 'mr-sm' %>
-            <%= button_to 'Выйти', session_path, method: :delete %>
-          <% else %>
-            <%= link_to 'Вход', new_session_path, class: 'button button-yellow mr-sm'%>
-            <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow'%>
-          <% end %>
+        <!-- Навигационная панель -->
+        <div class="navbar">
+            <p class="title-sm text-bold">
+                <%= link_to 'Wedding Budget', root_path, class: 'navbar-brand mr-sm' %>
+            </p>
+            <div class="navbar-links">
+                <% if current_user.present? %>
+                    <span class="navbar-user"><%= current_user.name %></span>
+                    <%= button_to 'Выйти', session_path, method: :delete, class: 'button button-logout' %>
+                <% else %>
+                    <%= link_to 'Вход', new_session_path, class: 'button button-main mr-sm' %>
+                    <%= link_to 'Регистрация', new_user_path, class: 'button button-main' %>
+                <% end %>
+            </div>
         </div>
-      </div>
 
-      <% if flash[:notice].present? %>
-        <p class="mb mt message message-notice"><%= flash[:notice] %></p>
-      <% elsif flash[:alert].present? %>
-        <p class="mb mt message message-notice"><%= flash[:alert] %></p>  
-      <% end %>
+        <!-- Flash сообщения -->
+        <% if flash[:notice].present? %>
+            <p class="message message-notice"><%= flash[:notice] %></p>
+        <% elsif flash[:alert].present? %>
+            <p class="message message-alert"><%= flash[:alert] %></p>  
+        <% end %>
 
-      <%= yield %>
+        <!-- Основное содержимое -->
+        <%= yield %>
     </div>
-  </body>
+</body>
 </html>

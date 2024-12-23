@@ -1,0 +1,148 @@
+/* Общий стиль */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f6f1; /* Светлый бежевый фон */
+    color: #000; /* Черный для текста */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Обертка */
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Контейнер для содержимого */
+.container {
+    background: #fffaf2; /* Светло-бежевый фон контейнера */
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень с черным оттенком */
+    text-align: center;
+}
+
+/* Навигационная панель */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fffaf2; /* Светло-бежевый */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    margin-bottom: 20px;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    color: #000; /* Черный текст */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-brand:hover {
+    text-decoration: underline;
+}
+
+/* Ссылки и пользовательская информация */
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-user {
+    color: #333; /* Темно-серый текст */
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Flash сообщения */
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.message-notice {
+    background-color: #e8dcc3; /* Светло-бежевый для уведомлений */
+    color: #000;
+}
+
+.message-alert {
+    background-color: #e8c3c3; /* Красновато-бежевый для ошибок */
+    color: #000;
+}
+
+/* Кнопки */
+.button {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Черный текст */
+    background-color: transparent; /* Прозрачный фон */
+    border: 2px solid #000; /* Черная обводка */
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #000; /* Черный фон при наведении */
+    color: #fff; /* Белый текст при наведении */
+}
+
+.button-main {
+    border-color: #b59d82; /* Темно-бежевый обводка */
+}
+
+.button-main:hover {
+    background-color: #b59d82; /* Темно-бежевый фон при наведении */
+    color: #fff;
+}
+
+.button-logout {
+    background-color: #70594c; /* Темный бежевый фон */
+    color: #fff;
+    border: none;
+}
+
+.button-logout:hover {
+    background-color: #5a4633; /* Более темный бежевый */
+}
+
+/* Заголовок */
+h1 {
+    font-size: 24px;
+    color: #000; /* Черный для заголовка */
+}
+
+/* Описание */
+p {
+    font-size: 16px;
+    margin: 10px 0 20px;
+    line-height: 1.5;
+    color: #333; /* Темно-серый для текста */
+}
+
+/* Отступы для кнопок */
+.mr-sm {
+    margin-right: 10px;
+}
+
+.mt {
+    margin-top: 10px;
+}
+
+.mb {
+    margin-bottom: 10px;
+}

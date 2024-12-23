@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Budget Calculator</title>
-</head>
-<body>
-  <h1>Добро пожаловать на сервис расчета бюджета!</h1>
-  <p>Этот сервис поможет вам спланировать свадьбу. Просто нажмите кнопку ниже, чтобы начать расчет.</p>
-  
-  <% if current_user.nil? %>
-    <%= button_to 'Начать!', new_session_path, method: :get, class: 'btn btn-primary' %>
-  <% else %>
-    <%= button_to 'Начать!', calculations_path, method: :get, class: 'btn btn-primary' %>
-  <% end %>
-
-</body>
-</html>
+ <div class="container">
+        <h1>Планировщик бюджета</h1>
+        <p>Ваш помощник в подготовке к свадьбе мечты</p>
+        
+        <!-- Ruby код вставляется сюда -->
+        <% if current_user.nil? %>
+            <%= button_to 'Начать', new_session_path, method: :get, class: 'button btn-primary' %>
+        <% else %>
+            <%= button_to 'Начать', calculations_path, method: :get, class: 'button btn-primary' %>
+        <% end %>
+</div>
 

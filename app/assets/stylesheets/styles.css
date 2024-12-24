@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
 }
 
 /* Обертка */
@@ -29,6 +29,7 @@ body {
 
 /* Навигационная панель */
 .navbar {
+    position: relative; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,6 +61,7 @@ body {
     color: #333; /* Темно-серый текст */
     font-size: 16px;
     margin-right: 10px;
+    font-weight: bold;
 }
 
 /* Flash сообщения */
@@ -145,4 +147,246 @@ p {
 
 .mb {
     margin-bottom: 10px;
+}
+
+.mb-sm {
+    margin-bottom: 5px;
+}
+
+.mb-min {
+    margin-bottom: 1px;
+}
+
+.mt-lg {
+    margin-top: 20px;
+}
+
+/* Формы */
+form p {
+    margin: 0;
+    text-align: left; /* Текст выравнивается по левому краю */
+}
+
+form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000; /* Черный текст */
+}
+
+.text-red {
+    color: #e63946; /* Красный для сообщений об ошибке */
+    font-size: 14px;
+}
+
+/* Кнопка без рамок */
+.button-no-border {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Черный текст */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без обводки */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-no-border:hover {
+    color: #b59d82; /* Темно-бежевый цвет текста при наведении */
+    text-decoration: underline; /* Подчеркивание текста при наведении */
+}
+
+/* Поля ввода */
+.form-text-field {
+    width: 50%;
+    padding: 10px 10px; /* Увеличены отступы для большего размера */
+    font-size: 14px; /* Увеличен размер шрифта */
+    border: 1px solid #ccc; /* Серый контур */
+    border-radius: 6px; /* Немного округленные углы */
+    background-color: #fff; /* Белый фон */
+    color: #000; /* Черный текст */
+    margin-top: 8px;
+    transition: border-color 0.3s ease;
+    height: 10px; /* Увеличена высота поля */
+}
+
+.form-text-field-login
+{
+    width: 60%;
+}
+
+.form-text-field-title
+{
+    width: 30%;
+}
+
+/* Эффект при фокусе на поле */
+.form-text-field:focus {
+    border-color: #b59d82; /* Темно-бежевый контур при фокусе */
+    outline: none;
+}
+
+/* Ссылка без подчеркивания при наведении */
+.link-no-underline {
+    color: #000; /* Черный текст */
+    text-decoration: none; /* Без подчеркивания */
+     /* font-weight: bold;Жирный текст для выделения */
+    transition: color 0.3s ease; /* Плавный переход для изменения цвета */
+}
+
+/* Эффект при наведении */
+.link-no-underline:hover {
+    color: #b59d82; /* Темно-бежевый цвет текста при наведении */
+    text-decoration: none; /* Убираем подчеркивание при наведении */
+}
+
+.container-left {
+    text-align: left;
+}
+
+/* Контейнер для ссылок */
+.links-container {
+    display: flex; /* Используем flexbox для размещения элементов в строку */
+    gap: 20px; /* Отступ между ссылками */
+    align-items: center; /* Центрирование элементов по вертикали */
+}
+
+/* Стиль таблицы */
+table {
+    width: 100%; /* Ширина таблицы на весь доступный блок */
+    border-collapse: collapse; /* Убирает промежутки между ячейками */
+    margin-bottom: 20px; /* Отступ снизу таблицы */
+    table-layout: fixed; /* Устанавливает фиксированное распределение колонок */
+}
+
+/* Стиль заголовков таблицы */
+th {
+    text-align: left; /* Выравнивание текста по левому краю */
+    padding: 12px 20px; /* Увеличенный отступ для заголовков */
+    background-color: #f9f6f1; /* Светлый бежевый фон для заголовков */
+    font-weight: bold; /* Жирный шрифт для заголовков */
+    border-bottom: 2px solid #ccc; /* Линия под заголовками */
+}
+
+/* Стиль ячеек таблицы */
+td {
+    padding: 10px 20px; /* Увеличенные отступы в ячейках */
+    border-bottom: 1px solid #ddd; /* Линия под ячейками */
+}
+
+/* Дополнительные стили для таблицы */
+tbody tr:hover {
+    background-color: #f1f1f1; /* Цвет фона строки при наведении */
+}
+
+.remove_budget_row{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Черный текст */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без обводки */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove_control_row{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Черный текст */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без обводки */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove_contractor_row{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Черный текст */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без обводки */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove_alco_row{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Черный текст */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без обводки */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove_guest_row{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #000; /* Черный текст */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без обводки */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* 
+form input[type="text"],
+form input[type="number"] {
+    width: 100%; /* Заставляет поля формы занимать всю доступную ширину 
+    box-sizing: border-box;  Учитывает padding и border при расчете ширины 
+} 
+*/
+
+.custom-form input[type="text"],
+.custom-form input[type="number"] {
+    width: 100%; /* Заставляет поля формы занимать всю доступную ширину */
+    box-sizing: border-box; /* Учитывает padding и border при расчете ширины */
+    padding: 10px 10px; /* Увеличены отступы для большего размера */
+    font-size: 14px; /* Увеличен размер шрифта */
+    border: 1px solid #ccc; /* Серый контур */
+    border-radius: 6px; /* Немного округленные углы */
+    background-color: #fff; /* Белый фон */
+    color: #000; /* Черный текст */
+    margin-top: 8px;
+    transition: border-color 0.3s ease;
+    height: 10px; /* Увеличена высота поля */
+}
+
+.custom-form input[type="text"]:focus,
+.custom-form input[type="number"]:focus {
+    border-color: #b59d82; /* Темно-бежевый контур при фокусе */
+    outline: none;
+}
+
+.custom-form input#exclude-field {
+    width: 30%; /* Вернем ширину по умолчанию или зададим другую */
+}
+
+.icon-class {
+    width: 50%; /* Задайте нужную ширину */
+    height: auto; /* Сохраняйте пропорции изображения */
+    display: block; /* Если нужно центровать */
+    margin: 0 auto 20px; /* Центрировать и добавить отступ снизу */
 }

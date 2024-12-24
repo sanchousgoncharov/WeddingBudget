@@ -1,10 +1,12 @@
 <div class="container">
-    <h2 class="title">Страница бюджета свадьбы</h2>
     <h3><%= @calculation.title %></h3>
-    <p>Дата создания: <%= @calculation.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y") %></p>
-    <p>Дата последнего изменения: <%= @calculation.updated_at.in_time_zone('Moscow').strftime("%d.%m.%Y %H:%M") %></p>
 
-    <h2>Бюджет:</h2>
+    <div class = "container-left">
+        <p class="mb-min">Дата создания: <%= @calculation.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y") %></p>
+        <p>Дата последнего изменения: <%= @calculation.updated_at.in_time_zone('Moscow').strftime("%d.%m.%Y %H:%M") %></p>
+    </div>
+
+    <h2 class = "container-left">Бюджет:</h2>
     <% if @budgets.any? %>
     <table>
         <thead>
@@ -29,10 +31,10 @@
         </tbody>
     </table>
     <% else %>
-    <p>Бюджет отсутствует.</p>
+    <p class = "container-left">Бюджет отсутствует.</p>
     <% end %>
 
-    <h2>Контроль подрядчиков:</h2>
+    <h2 class = "container-left">Контроль подрядчиков:</h2>
     <% if @controls.any? %>
     <table>
         <thead>
@@ -60,10 +62,10 @@
         </tbody>
     </table>
     <% else %>
-    <p>Контроль подрядчиков отсутствует.</p>
+    <p class = "container-left">Контроль подрядчиков отсутствует.</p>
     <% end %>
 
-    <h2>Обязательства и договоренности:</h2>
+    <h2 class = "container-left">Обязательства и договоренности:</h2>
     <% if @contractors.any? %>
     <table>
         <thead>
@@ -93,10 +95,10 @@
         </tbody>
     </table>
     <% else %>
-    <p>Контроль обязательств и договоренностей отсутствует.</p>
+    <p class = "container-left">Контроль обязательств и договоренностей отсутствует.</p>
     <% end %>
 
-    <h2>Учет гостей:</h2>
+    <h2 class = "container-left">Учет гостей:</h2>
     <% if @guests.any? %>
     <table>
         <thead>
@@ -126,10 +128,10 @@
         </tbody>
     </table>
     <% else %>
-    <p>Учет гостей отсутствует.</p>
+    <p class = "container-left">Учет гостей отсутствует.</p>
     <% end %>
 
-    <h2>Расчет алкоголя:</h2>
+    <h2 class = "container-left">Расчет алкоголя:</h2>
     <% if @alcos.any? %>
     <table>
         <thead>
@@ -148,11 +150,14 @@
         </tbody>
     </table>
     <% else %>
-    <p>Расчет алкоголя отсутствует.</p>
+    <p class = "container-left">Расчет алкоголя отсутствует.</p>
     <% end %>
-
-    <p><%= link_to "Все расчеты", calculations_path %></p>
-    <p><%= link_to "Редактировать", edit_calculation_path(@calculation), data: {turbo: false} %></p>
-    <p><%= link_to "Удалить", calculation_path(@calculation), data: {turbo_method: :delete, confirm: 'Вы уверены, что хотите удалить этот расчет?' } %></p>
-
+    
+    <div class = "container-left">
+        <p><%= link_to "Все расчеты", calculations_path, class: 'button button-main' %></p>
+        <p class="mt-lg">
+            <%= link_to "Редактировать", edit_calculation_path(@calculation), data: {turbo: false}, class: 'button button-main' %>
+            <%= link_to "Удалить", calculation_path(@calculation), data: {turbo_method: :delete, confirm: 'Вы уверены, что хотите удалить этот расчет?' }, class: 'button-no-border' %>
+        </p>
+    </div>
 </div>

@@ -10,11 +10,11 @@
   <% end %>
 
   <div class="mt">
-    <%= form_with model: @calculation, url: calculation_path(@calculation), method: :patch, data: {turbo: false} do |form|%>
+    <%= form_with model: @calculation, url: calculation_path(@calculation), method: :patch, data: {turbo: false}, class: "custom-form" do |form|%>
       <p><%= form.label :title, 'Название'%></p>
-      <p><%= form.text_field :title, class: 'form-text-field'%></p>
+      <p><%= form.text_field :title, id: "exclude-field"%></p>
 
-      <h2>Бюджет:</h2>
+      <h2 class = "container-left">Бюджет:</h2>
       <table id="budgets_table">
         <thead>
           <tr>
@@ -44,9 +44,9 @@
         </tbody>
       </table>
 
-      <%= link_to "Добавить строку", "#", id: "add_budget_row" %><br><br>
+      <%= link_to "Добавить строку", "#", id: "add_budget_row", class: 'button-no-border' %><br><br>
 
-      <h2>Контроль подрядчиков:</h2>
+      <h2 class = "container-left">Контроль подрядчиков:</h2>
       <table id="controls_table">
         <thead>
           <tr>
@@ -78,9 +78,9 @@
         </tbody>
       </table>
 
-      <%= link_to "Добавить строку", "#", id: "add_control_row" %><br><br>
+      <%= link_to "Добавить строку", "#", id: "add_control_row", class: 'button-no-border' %><br><br>
 
-      <h2>Обязательства и договоренности:</h2>
+      <h2 class = "container-left">Обязательства и договоренности:</h2>
       <table id="contractors_table">
         <thead>
           <tr>
@@ -113,9 +113,9 @@
         </tbody>
       </table>
 
-      <%= link_to "Добавить строку", "#", id: "add_contractor_row" %><br><br>
+      <%= link_to "Добавить строку", "#", id: "add_contractor_row", class: 'button-no-border' %><br><br>
 
-      <h2>Учет гостей:</h2>
+      <h2 class = "container-left">Учет гостей:</h2>
       <table id="guests_table">
         <thead>
           <tr>
@@ -148,9 +148,9 @@
         </tbody>
       </table>
 
-      <%= link_to "Добавить строку", "#", id: "add_guest_row" %><br><br>
+      <%= link_to "Добавить строку", "#", id: "add_guest_row", class: 'button-no-border' %><br><br>
 
-      <h2>Расчет алкоголя:</h2>
+      <h2 class = "container-left">Расчет алкоголя:</h2>
       <table id="alcos_table">
         <thead>
           <tr>
@@ -173,11 +173,14 @@
         </tbody>
       </table>
 
-      <%= link_to "Добавить строку", "#", id: "add_alco_row" %><br><br>
+      <%= link_to "Добавить строку", "#", id: "add_alco_row", class: 'button-no-border' %><br><br>
 
-      <p class="mt-lg"><%= form.submit 'Редактировать!', class: 'button-button-main'%> 
+      <div class = "container-left">
+        <p class="mt-lg">
+          <%= form.submit 'Редактировать', class: 'button button-main'%>
+          <%= link_to "Все расчеты", calculations_path, class: 'button-no-border'  %>
+        </p>
+      </div>
     <% end %>
   </div>
-
-  <p><%= link_to "Все расчеты", calculations_path  %></p>
 </div>

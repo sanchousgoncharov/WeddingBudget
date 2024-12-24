@@ -1,11 +1,12 @@
 <div class="container">
     <h1 class="title">Все расчеты</h1>
 
-    <p><%= button_to 'Создать!', new_calculation_path, method: :get, data: {turbo: false}, class: 'btn btn-primary' %>
+    <p><%= button_to 'Создать новый', new_calculation_path, method: :get, data: {turbo: false}, class: 'button btn-primary mb' %>
     
+    <div class="container-left">
     <% @calculations.each do |calculation|%>
-        <p><%= link_to "План \"#{calculation.title}\". Создано #{calculation.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y")}", calculation_path(id: calculation.id) %></p>
+        <p><%= link_to "План \"#{calculation.title}\". Создано #{calculation.created_at.in_time_zone('Moscow').strftime("%d.%m.%Y")}", calculation_path(id: calculation.id), class: 'link-no-underline' %></p>
     <% end %>
-    
+    </div>
 </div>
 

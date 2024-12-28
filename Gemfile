@@ -38,7 +38,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Gem for Postgesql
-gem "pg", "~> 1.4"
+gem "pg", "~> 1.5.9"
 
 # Gem for Hashing
 gem "bcrypt", "~> 3.1.7"

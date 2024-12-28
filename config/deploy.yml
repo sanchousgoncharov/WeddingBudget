@@ -1,13 +1,15 @@
+<% require "dotenv"; Dotenv.load(".env") %>
+
 # Name of your application. Used to uniquely configure containers.
 service: wedding_budget
 
 # Name of the container image.
-image: your-user/wedding_budget
+image: sanchousgoncharov/wedding_budget
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 194.58.126.146
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -19,13 +21,16 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  host: app.example.com
+  host: wedding-project.ru
+ # app_port: 8080
+  response_timeout: 60
+
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
   # server: registry.digitalocean.com / ghcr.io / ...
-  username: your-user
+  username: sanchousgoncharov
 
   # Always use an access token rather than real password when possible.
   password:
@@ -48,7 +53,7 @@ env:
 
     # Match this to any external database server to configure Active Record correctly
     # Use wedding_budget-db for a db accessory server on same machine via local kamal docker network.
-    # DB_HOST: 192.168.0.2
+    DB_HOST: wedding_budget-db
 
     # Log everything from Rails
     # RAILS_LOG_LEVEL: debug
@@ -92,7 +97,21 @@ builder:
 #   user: app
 
 # Use accessory services (secrets come from .kamal/secrets).
-# accessories:
+accessories:
+  postgres:
+    image: postgres:15
+    roles:
+      - web
+    env:
+      clear:
+        POSTGRES_USER: "postgres"
+        POSTGRES_DB: "production"
+      secret:
+        - POSTGRES_PASSWORD
+    files:
+      - config/init.sql:/docker-entrypoint-initdb.d/setup.sql
+    directories:
+      - data:/var/lib/postgresql/data
 #   db:
 #     image: mysql:8.0
 #     host: 192.168.0.2

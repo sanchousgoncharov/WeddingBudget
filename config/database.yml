@@ -28,5 +28,5 @@ test:
 production:
   <<: *default
   database: storage/production
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: postgres
+  password: Sacrerqazwsx123

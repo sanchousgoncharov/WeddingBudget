@@ -27,6 +27,7 @@ test:
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
   <<: *default
-  database: storage/production
+  database: production
+  host: localhost
   username: postgres
   password: Sacrerqazwsx123

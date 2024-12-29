@@ -100,8 +100,8 @@ builder:
 accessories:
   postgres:
     image: postgres:15
-    roles:
-      - web
+    host: 194.58.126.146
+    port: "127.0.0.1:5432:5432"
     env:
       clear:
         B_HOST: wedding_budget-db

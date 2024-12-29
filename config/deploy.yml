@@ -53,7 +53,7 @@ env:
 
     # Match this to any external database server to configure Active Record correctly
     # Use wedding_budget-db for a db accessory server on same machine via local kamal docker network.
-    DB_HOST: wedding_budget-db
+    DB_HOST: wedding_budget-postgres
 
     # Log everything from Rails
     # RAILS_LOG_LEVEL: debug
@@ -99,18 +99,16 @@ builder:
 # Use accessory services (secrets come from .kamal/secrets).
 accessories:
   postgres:
-    image: postgres:15
-    host: 194.58.126.146
-    port: "127.0.0.1:5432:5432"
+    image: postgres:14
+    host: "194.58.126.146"
+    port: "127.0.0.1:5432"
     env:
       clear:
-        B_HOST: wedding_budget-db
+        POSTGRES_USER: POSTGRES_PASSWORD
         POSTGRES_USER: "postgres"
         POSTGRES_DB: "production"
       secret:
         - POSTGRES_PASSWORD
-    files:
-      - config/init.sql:/docker-entrypoint-initdb.d/setup.sql
     directories:
       - data:/var/lib/postgresql/data
 #   db:

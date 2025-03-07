@@ -38,7 +38,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: Sacrerqazwsx123
-  host: <%= ENV.fetch("DATABASE_HOST") { "postgres" } %>  # Имя контейнера или хост
+  host: <%= ENV.fetch("DATABASE_HOST") { "194.58.126.146" } %>  # Имя контейнера или хост
   port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>        # Порт PostgreSQL
   database: <%= ENV.fetch("DATABASE_NAME") { "myapp_#{Rails.env}" } %>
 

@@ -95,6 +95,8 @@ builder:
 # Use a different ssh user than root
 # ssh:
 #   user: app
+healthcheck:
+  path: /
 
 # Use accessory services (secrets come from .kamal/secrets).
 accessories:

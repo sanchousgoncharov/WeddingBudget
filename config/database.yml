@@ -4,30 +4,52 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem "sqlite3"
 #
+# default: &default
+#   adapter: postgresql
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: postgres
+#   password: Sacrerqazwsx123
+#   url: localhost
+
+# development:
+#   <<: *default
+#   database: storage/development
+
+# # Warning: The database defined as "test" will be erased and
+# # re-generated from your development database when you run "rake".
+# # Do not set this db to the same as development or production.
+# test:
+#   <<: *default
+#   database: storage/test
+
+
+# # Store production database in the storage/ directory, which by default
+# # is mounted as a persistent Docker volume in config/deploy.yml.
+# production:
+#   <<: *default
+#   database: production
+#   host: postgresql://postgres:postgres@127.0.0.1:5432/production
+#   username: postgres
+#   password: Sacrerqazwsx123
+
+
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: Sacrerqazwsx123
-  host: localhost
+  host: <%= ENV.fetch("DATABASE_HOST") { "postgres" } %>  # Имя контейнера или хост
+  port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>        # Порт PostgreSQL
+  database: <%= ENV.fetch("DATABASE_NAME") { "myapp_#{Rails.env}" } %>
 
 development:
   <<: *default
   database: storage/development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: storage/test
 
-
-# Store production database in the storage/ directory, which by default
-# is mounted as a persistent Docker volume in config/deploy.yml.
 production:
   <<: *default
   database: production
-  host: localhost
-  username: postgres
-  password: Sacrerqazwsx123

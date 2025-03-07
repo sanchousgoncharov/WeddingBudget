@@ -23,5 +23,15 @@ module WeddingBudget
     #
     # config.time_zone = "Moscow"
     # config.eager_load_paths << Rails.root.join("extras")
+    # Отключение Action Cable
+    config.action_cable.mount_path = nil
+    config.action_cable.url = nil
+    config.action_cable.allowed_request_origins = nil
+
+    # Использование адаптера :async для фоновых задач
+    config.active_job.queue_adapter = :async
+
+    # Использование кэша в памяти
+    config.cache_store = :memory_store
   end
 end

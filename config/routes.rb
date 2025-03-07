@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "healthz" => "rails/welcome", as: :rails_health_check
   root to: "welcome#index"
 
   resources :users, only: %i[new create]

@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_08_071043) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_08_181027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "alcos", id: :integer, default: nil, force: :cascade do |t|
+  create_table "alcos", force: :cascade do |t|
     t.integer "calc_id"
     t.integer "order", comment: "Порядок вывода"
     t.string "title"
     t.float "litres_for_one", comment: "Литры алкоголя на одного человека"
   end
 
-  create_table "budgets", id: :integer, default: nil, force: :cascade do |t|
+  create_table "budgets", force: :cascade do |t|
     t.integer "calc_id"
     t.integer "order", comment: "Порядок вывода"
     t.string "title"
@@ -31,14 +31,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_08_071043) do
     t.integer "remain_sum", comment: "Остаток суммы"
   end
 
-  create_table "calculations", id: :integer, default: nil, force: :cascade do |t|
+  create_table "calculations", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
   end
 
-  create_table "contractors", id: :integer, default: nil, force: :cascade do |t|
+  create_table "contractors", force: :cascade do |t|
     t.integer "calc_id"
     t.integer "order", comment: "Порядок вывода"
     t.string "category", comment: "Подрядчик"
@@ -50,7 +50,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_08_071043) do
     t.string "email"
   end
 
-  create_table "controls", id: :integer, default: nil, force: :cascade do |t|
+  create_table "controls", force: :cascade do |t|
     t.integer "calc_id"
     t.integer "order", comment: "Порядок вывода"
     t.string "title"
@@ -61,7 +61,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_08_071043) do
     t.string "place"
   end
 
-  create_table "guests", id: :integer, default: nil, force: :cascade do |t|
+  create_table "guests", force: :cascade do |t|
     t.integer "calc_id"
     t.integer "order", comment: "Порядок вывода"
     t.string "name"
@@ -81,10 +81,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_08_071043) do
     t.datetime "updated_at", precision: nil
   end
 
-  add_foreign_key "alcos", "calculations", column: "calc_id", name: "alcos_calc_id_fkey"
-  add_foreign_key "budgets", "calculations", column: "calc_id", name: "budgets_calc_id_fkey"
+  add_foreign_key "alcos", "calculations", column: "calc_id"
+  add_foreign_key "budgets", "calculations", column: "calc_id"
   add_foreign_key "calculations", "users"
-  add_foreign_key "contractors", "calculations", column: "calc_id", name: "contractors_calc_id_fkey"
-  add_foreign_key "controls", "calculations", column: "calc_id", name: "controls_calc_id_fkey"
-  add_foreign_key "guests", "calculations", column: "calc_id", name: "guests_calc_id_fkey"
+  add_foreign_key "contractors", "calculations", column: "calc_id"
+  add_foreign_key "controls", "calculations", column: "calc_id"
+  add_foreign_key "guests", "calculations", column: "calc_id"
 end

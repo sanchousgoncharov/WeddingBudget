@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_08_071043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -73,7 +73,7 @@ ActiveRecord::Schema[8.0].define(version: 0) do
     t.string "guest", comment: "С чей стороны гость?"
   end
 
-  create_table "users", id: :integer, default: nil, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
     t.string "user_email"
@@ -83,7 +83,7 @@ ActiveRecord::Schema[8.0].define(version: 0) do
 
   add_foreign_key "alcos", "calculations", column: "calc_id", name: "alcos_calc_id_fkey"
   add_foreign_key "budgets", "calculations", column: "calc_id", name: "budgets_calc_id_fkey"
-  add_foreign_key "calculations", "users", name: "calculations_user_id_fkey"
+  add_foreign_key "calculations", "users"
   add_foreign_key "contractors", "calculations", column: "calc_id", name: "contractors_calc_id_fkey"
   add_foreign_key "controls", "calculations", column: "calc_id", name: "controls_calc_id_fkey"
   add_foreign_key "guests", "calculations", column: "calc_id", name: "guests_calc_id_fkey"
